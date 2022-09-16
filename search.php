@@ -11,8 +11,8 @@ get_header();
                         <div class="col-lg-7 d-flex flex-column justify-content-center align-items-stretch  order-2 order-lg-1">
                             <div class="content">
                                 <h3>
-                                    <!-- طباعة واستدعاء الفئة (category) الحالية -->
-                                    <?php single_cat_title() ?>
+                                    <!-- ترجع الكلمة التي تم البحث عنها -->
+                                    Search Result for: <?php echo get_search_query() ?>
                                 </h3>
                             </div>
                         </div>
@@ -37,10 +37,12 @@ get_header();
                         <div class="col-lg-6 pt-4 pt-lg-0 content" data-aos="fade-left" data-aos-delay="100">
                             <?php the_category(', ') ?>
                             <h3><?php the_title() ?></h3>
+                            <?php if (get_post_type() == 'post') : ?>
                             <p><?php /* دالة لاستدعاء تاريخ البوست */ echo get_the_date() ?> by: <strong><?php /* دالة لاستدعاء مؤلف البوست */ the_author_link() ?></strong></p>
                             <p>
                                 <?php the_post_thumbnail(); ?>
                             </p>
+                            <?php endif ?>
                             <p>
                                 <?php 
                                 // دالة لاستدعاء محتوى البوست 
